@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  Title:
+  <%= @blog.title %>
+</h1>
+
+<div id="show_blog_link">
+  <%= link_to 'Edit', edit_blog_path(@blog), id: 'a_edit' %> |
+  <%= link_to 'Back', blogs_path, id:'a_back' %>
+</div>
+
+<h2>
+  Listing entries
+</h2>
+<div class="section">
+  <table>
+    <thead>
+    <tr>
+      <th id="th_title">Title</th>
+      <th id="th_body">Body</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @entries.each do |entry| %>
+        <tr>
+          <td><%= entry.title %></td>
+          <td><%= entry.body %></td>
+          <td><%= link_to 'Show', blog_entry_path(blog_id:@blog, id:entry.id) %></td>
+          <td><%= link_to 'Edit', edit_blog_entry_path(blog_id:@blog, id:entry.id) %></td>
+          <td><%= link_to 'Destroy', blog_entry_path(blog_id:@blog, id:entry.id), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'New Entry', new_blog_entry_path(@blog), id:'a_new_entry' %>
+</div>
+

@@ -1,0 +1,33 @@
+// Place all the styles related to the entries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.field {
+  input{
+    width: 400px;
+  }
+}
+
+$border_bottom_color: #BBBBBB;
+
+h2{
+  padding-top: 10px;
+  border-top: solid 1px $border_bottom_color;
+}
+
+table{
+  width: 80%;
+  th{
+    text-align: left;
+    padding: 10px;
+    border-top: solid 1px $border_bottom_color;
+  }
+  tr{
+  }
+  td{
+    font-size: 15px;
+    padding: 5px;
+    border-top: solid 1px $border_bottom_color;
+
+  }
+}

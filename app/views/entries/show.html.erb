@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @blog.title %>
+</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @entry.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @entry.body %>
+</p>
+
+<%= link_to 'Edit', edit_blog_entry_path() %> |
+<%= link_to 'Back', blog_path(@entry.blog_id) %>
+
+<h2>
+  Listing comments
+</h2>
+<div class="section">
+  <table>
+    <thead>
+    <tr>
+      <th id="th_body">Body</th>
+      <th colspan="1"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @comments.each do |comment| %>
+        <tr>
+          <% if !comment.approved?  %>
+            <td>(未承認)</td>
+            <td>
+              <%= link_to 'Approve', blog_entry_comment_approve_path(entry_id: @entry.id , id:comment.id), method: :put, data: {confirm: 'Are you sure?' } %>
+            </td>
+          <% else %>
+              <td><%= comment.body %></td>
+              <td></td>
+          <% end %>
+          <td><%= link_to 'Destroy', blog_entry_comment_path(entry_id: @entry.id , id:comment.id), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <h3>
+    New comments
+  </h3>
+
+  <%= form_for([@blog,@entry,@comment]) do |f| %>
+      <% if flash.key?(:create_error_count) %>
+        <div id="error_explanation">
+          <h2><%= pluralize(flash[:create_error_count], "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% flash[:create_error_messages].each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :body %><br>
+        <%= f.text_area :body, :size => "100x2"  %>
+      </div>
+      <div class="actions">
+        <%= f.hidden_field :entry_id, value: @entry.id %>
+        <%= f.submit('Save') %>
+      </div>
+  <% end %>
+</div>
