@@ -33,12 +33,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byeb ug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
   gem 'ruby-debug-ide'
 
   gem 'debase'
+
+  gem 'letter_opener', '~> 1.1.0'
+
+  gem 'rspec'
+
+  gem 'rspec-rails'
 end
 
 group :development do

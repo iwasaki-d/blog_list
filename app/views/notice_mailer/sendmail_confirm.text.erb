@@ -1,0 +1,15 @@
+NoticeMailer#sendmail_confirm
+
+新しいコメントが登録されました。
+
+承認または削除してください。
+
+<% comment = @comment %>
+<% entry = @comment.entry %>
+<% blog = @comment.entry.blog %>
+
+Blog: <%= blog.title %>
+Entry: <%= entry.title %>
+Comment: <%= @comment.body %>
+
+URL: <%= url_for(controller: :entries, action: :show, only_path: false, id: entry.id, blog_id: blog.id) %>

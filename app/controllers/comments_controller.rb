@@ -6,6 +6,9 @@ class CommentsController < ApplicationController
     @comment.status = 'unapproved'
 
     if @comment.save
+
+      @mail = NoticeMailer.sendmail_confirm(@comment).deliver
+
       redirect_to blog_entry_path(redirect_params),notice: 'Comment was successfully created.'
     else
       redirect_to blog_entry_path(redirect_params),

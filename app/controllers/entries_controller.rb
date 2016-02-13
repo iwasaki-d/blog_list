@@ -21,12 +21,10 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
     @entry.blog_id = params[:blog_id]
 
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to blog_path(params[:blog_id]), notice: 'Entry was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @entry.save
+      redirect_to blog_path(params[:blog_id]), notice: 'Entry was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -51,7 +49,7 @@ class EntriesController < ApplicationController
       @entry = Entry.find_by(id:params[:id],blog_id:params[:blog_id])
 
       if @entry.nil?
-        return render text:'パラメータ改ざんエラー', status:500
+        return render text:'パラメータ改竄エラー', status:500
       end
 
       @blog = @entry.blog
