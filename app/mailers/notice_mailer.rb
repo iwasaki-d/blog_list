@@ -1,6 +1,6 @@
 class NoticeMailer < ApplicationMailer
 
-  default from: 'from@blog_list.mail',
+  default from: 'iwasaki_d@iwasaki.blog.com',
           subject: '新しいコメントが投稿されました'
 
   # Subject can be set in your I18n file at config/locales/en.yml
