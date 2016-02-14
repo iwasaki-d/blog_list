@@ -88,4 +88,6 @@ Rails.application.configure do
       :enable_starttls_auto => true
   }
 
+  config.action_mailer.default_url_options = { host: 'cryptic-chamber-14402.herokuapp.com' }
+
 end

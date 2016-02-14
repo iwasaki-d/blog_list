@@ -1,6 +1,6 @@
 class NoticeMailer < ApplicationMailer
 
-  default from: 'iwasaki_d@iwasaki.blog.com',
+  default from: 'app47446810@heroku.com',
           subject: '新しいコメントが投稿されました'
 
   # Subject can be set in your I18n file at config/locales/en.yml
