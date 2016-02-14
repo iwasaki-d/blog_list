@@ -49,7 +49,7 @@ class EntriesController < ApplicationController
       @entry = Entry.find_by(id:params[:id],blog_id:params[:blog_id])
 
       if @entry.nil?
-        return render text:'パラメータ改竄エラー', status:500
+        return render text:'パラメータ改竄エラー', status: BlogList::Application.config.http_status_alter_parameter
       end
 
       @blog = @entry.blog

@@ -42,14 +42,22 @@ class BlogsController < ApplicationController
 
   # DELETE /blogs/1
   def destroy
-    @blog.destroy
-    redirect_to blogs_url, notice: 'Blog was successfully destroyed.'
+    if @blog.destroy
+      redirect_to blogs_url, notice: 'Blog was successfully destroyed.'
+    else
+      render :show
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.find(params[:id])
+      @blog = Blog.find_by(id:params[:id])
+
+      if @blog.nil?
+        return render text:'パラメータ改竄エラー', status: BlogList::Application.config.http_status_alter_parameter
+      end
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
