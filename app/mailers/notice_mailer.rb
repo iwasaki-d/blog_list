@@ -13,7 +13,7 @@ class NoticeMailer < ApplicationMailer
 
 
     mail(
-        to: "to@blog_list.mail"
+        to: "d.iwasaki.g@gmail.com"
     ) do |format|
       format.text
     end
