@@ -90,6 +90,9 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
+    postmark (1.7.0)
+      json
+      rake
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -196,7 +199,9 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   letter_opener (~> 1.1.0)
+  mail
   pg
+  postmark
   rails (= 4.2.5)
   rails_12factor
   rspec
