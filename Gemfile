@@ -65,8 +65,6 @@ group :production do
 
   gem 'rails_12factor'
 
-  gem 'mail'
-
-  gem 'postmark'
+  gem 'postmark-rails', '>= 0.10.0'
 end
 
